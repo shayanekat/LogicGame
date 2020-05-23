@@ -1,0 +1,27 @@
+Logic Game
+C'est un jeu de simulation de circuit logique sous Python Tkinter
+
+BLOCKS :
+Input : 
+ - levier : 0 ou 1
+ - bouton : 1 pendant 1sec
+ 
+intermediaire :
+ - wire : ligne qui relie deux blocks
+
+Logic Blocks :
+ - AND gate
+ - OR gate
+ - XOR gate
+ - NAND gate
+ - NOR gate
+ - NXOR gate
+ - NOT gate
+ - demux4
+ - mux4
+
+Output :
+ - lamp
+
+
+
