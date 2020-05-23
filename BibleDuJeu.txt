@@ -23,5 +23,11 @@ Logic Blocks :
 Output :
  - lamp
 
+CONTROLS : 
+ menu  - click gauche : select_block
+ main  - click gauche : put_selected_block | select_block
+            - click droit : use_if_possible
+            - A key : rotate 90° left
+            - E key : rotate 90° right
 
 
