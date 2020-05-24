@@ -59,27 +59,40 @@ class Lever(Block):
     def ChangeState(self):
         """ Methode principale : le changement d'etat du levier entre 0 et 1. va encore changer """
         self.state = not(self.state)
-        main.delete(self.idt)
         if self.state:
-            self.color="black"
-            self.idt = main.create_text(self.x+int(S//2), self.y+int(S//2), text=self.text, font=("Calibri", "12"), fill="white")
-        else:
             self.color="white"
-            self.idt = main.create_text(self.x+int(S//2), self.y+int(S//2), text=self.text, font=("Calibri", "12"), fill="black")
+            main.itemconfig(self.idt, fill="black")
+        else:
+            self.color="black"
+            main.itemconfig(self.idt, fill="white")
         main.itemconfig(self.id, fill=self.color)
 
 
 # fonctions globales
 def test():
     """ Fonction temporaire de bouton pour tester le code"""
-    l1.ChangeState()
+    pass
 
 def menuMLC(event):
-    """Fonction deu click gauche de souris dans le menu : selection du block"""
+    """Fonction de click gauche de souris dans le menu : selection du block"""
     global selection
     if event.x // S == 0 and event.y // S == 0:
         selection = "lever"
         menu.itemconfig(levers[0].id, outline="blue", width=3)
+
+def mainMLC(event):
+    """ Fonction de click gauche de souris dans main : placer block selectionné | selection pour le wire"""
+    if selection == "lever":
+        l = Lever(x=event.x-S//2,y=event.y-S//2)
+        l.Place()
+        levers.append(l)
+
+def mainMRC(event):
+    """ Fonction de click droit de souris dans main : utiliser l'input """
+    for l in levers:
+        if l.x <= event.x <= l.x+S and l.y <= event.y <= l.y+S:
+            l.ChangeState()
+            # break
 
 # ====frontend====
 root = Tk()
@@ -87,19 +100,19 @@ root.title("LogicGame by Shayane Katchera")
 
 # canevas
 main = Canvas(root, width=WindowW, height=WindowH, bg="grey")
+main.bind("<Button-1>", mainMLC)
+main.bind("<Button-3>", mainMRC)
 main.pack(padx=5, pady=5)
 
 menu = Canvas(root, width=WindowW, height=2*S, bg="grey")
 menu.bind("<Button-1>", menuMLC)
 menu.pack(padx=5, pady=5)
 
-# test
+# init
 levers = MenuGrid()
-l1 = Lever(100, 200)
-l1.Place()
 
+# test
 b = Button(root,text="test",command=test)
 b.pack()
-
 
 root.mainloop()
