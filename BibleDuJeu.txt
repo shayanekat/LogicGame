@@ -5,9 +5,11 @@ BLOCKS :
 Input : 
  - levier : 0 ou 1
  - bouton : 1 pendant 1sec
+ - clock : freq de base : 1hz, puis 2hz si click droit
  
 intermediaire :
  - wire : ligne qui relie deux blocks
+ - delayer : rajoute de base 0.5 sec de delai puis 1sec pui 2sec si click droit
 
 Logic Blocks :
  - AND gate
@@ -17,8 +19,6 @@ Logic Blocks :
  - NOR gate
  - NXOR gate
  - NOT gate
- - demux4
- - mux4
 
 Output :
  - lamp
