@@ -4,10 +4,6 @@
 from tkinter import *
 import time
 
-# TODO (23/05/2020): 
-# - add mouse binding functions 
-# - add others block
-
 # =========================BACKEND=========================
 #init var
 WindowW, WindowH = 500, 500     # taille canvas (pixel)
