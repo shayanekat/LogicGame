@@ -10,6 +10,7 @@ Input :
 intermediaire :
  - wire : ligne qui relie deux blocks
  - delayer : rajoute de base 0.5 sec de delai puis 1sec pui 2sec si click droit
+ - interrupt : interrupteur qui peut couper le circuit (sortie a 0 dans tout les cas) ou le laisser passer (l'entrée en sortie)
 
 Logic Blocks :
  - AND gate
