@@ -248,6 +248,27 @@ def mainMRC(event):
             break
 
 
+def mainMMC(event):
+    """ Fonction de middle click de souris dans main : utiliser détruire l'objet """
+    for l in levers:
+        if l.x <= event.x <= l.x+S and l.y <= event.y <= l.y+S:
+            main.delete(l.id)
+            main.delete(l.idt)
+            break
+    
+    for btn in bouttons:
+        if btn.x <= event.x <= btn.x+S and btn.y <= event.y <= btn.y+S:
+            main.delete(btn.id)
+            main.delete(btn.idt)
+            break
+    
+    for clk in clocks:
+        if clk.x <= event.x <= clk.x+S and clk.y <= event.y <= clk.y+S:
+            main.delete(clk.id)
+            main.delete(clk.idt)
+
+
+
 def unselect():
     if selection == "lever":
         menu.itemconfig(levers[0].id, outline="black", width=1)
@@ -273,7 +294,7 @@ menu.pack(padx=5, pady=5)
 # init
 levers, bouttons, clocks, wires = MenuGrid()
 menu.bind("<Button-1>", menuMLC)
-main.bind("<Button-1>", mainMLC)
+main.bind("<Button-2>", mainMMC)
 main.bind("<Button-3>", mainMRC)
 
 # test
